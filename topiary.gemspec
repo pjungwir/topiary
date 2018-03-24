@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name = "topiary"
   s.version = Topiary::VERSION
 
-  s.summary = "Get a topological sort of a Directed Acyclic Graph"
-  s.description = "Uses Kahn's Algorithm to put all the nodes into a linear list. Lets you include some custom data on each node."
+  s.summary = "Topologically sorts a Directed Acyclic Graph."
+  s.description = "Topologically sorts a Directed Acyclic Graph using Kahn's Algorithm. Lets you include some custom data on each node."
 
   s.authors = ["Paul A. Jungwirth"]
   s.homepage = "https://github.com/pjungwir/topiary"
