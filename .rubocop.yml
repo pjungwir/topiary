@@ -1,0 +1,84 @@
+AllCops:
+  Exclude:
+    - "topiary.gemspec"
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+  ExcludedMethods: describe
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 7
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+    - "spec/**/*"
+  Max: 30
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+
+Style/Documentation:
+  Exclude:
+    - "spec/**/*"
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "%w": "[]"
+
+Style/NegatedWhile:
+  Enabled: false
+
+Style/Not:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false

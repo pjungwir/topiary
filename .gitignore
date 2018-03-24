@@ -1,0 +1,8 @@
+.*.swp
+.*.swo
+/.ruby-version
+/.ruby-gemset
+/pkg
+/tmp
+/README.html
+/coverage

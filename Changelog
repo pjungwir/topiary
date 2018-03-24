@@ -1,0 +1,7 @@
+1.0.0
+-----
+
+- Initial release. Lets you construct a DAG and get a topological sort of the
+nodes.
+
+
