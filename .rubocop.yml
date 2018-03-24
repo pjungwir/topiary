@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - "topiary.gemspec"
+    - "vendor/**/*"
 
 Layout/EmptyLinesAroundModuleBody:
   Enabled: false
