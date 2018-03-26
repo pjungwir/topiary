@@ -24,8 +24,10 @@ class Topiary::Node
 
   def initialize(data=nil, needs=[], feeds=[])
     @data = data
-    @needs = Set.new needs
-    @feeds = Set.new feeds
+    @needs = Set.new
+    @feeds = Set.new
+    needs.each{|n| need!(n)}
+    feeds.each{|n| feed!(n)}
   end
 
   def begin!
@@ -45,7 +47,6 @@ class Topiary::Node
   end
 
   def need!(n)
-    @original_needs << n
     needs << n
     n.feeds << self
   end
@@ -62,10 +63,8 @@ class Topiary::Node
   def to_s
     [
       name,
-      "needs:",
-      "[" + needs.map(&:name).join(", ") + "]",
-      "feeds:",
-      "[" + feeds.map(&:name).join(", ") + "]"
+      "needs:[" + needs.map(&:name).join(",") + "]",
+      "feeds:[" + feeds.map(&:name).join(",") + "]"
     ].join(" ")
   end
 
