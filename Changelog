@@ -1,3 +1,13 @@
+1.0.2
+-----
+
+- Fix nil error in Node#need!
+
+1.0.1
+-----
+
+- Fixes
+
 1.0.0
 -----
 
