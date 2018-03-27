@@ -28,9 +28,10 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
   ExcludedMethods: describe
+  Max: 30
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 Metrics/CyclomaticComplexity:
   Max: 7
@@ -41,7 +42,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - "spec/**/*"
-  Max: 30
+  Max: 35
 
 Style/AsciiComments:
   Enabled: false
@@ -83,5 +84,11 @@ Style/AndOr:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
 Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+Lint/EmptyWhen:
   Enabled: false

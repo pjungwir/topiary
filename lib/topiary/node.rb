@@ -64,12 +64,16 @@ class Topiary::Node
     [
       name,
       "needs:[" + needs.map(&:name).join(",") + "]",
-      "feeds:[" + feeds.map(&:name).join(",") + "]"
+      "feeds:[" + feeds.map(&:name).join(",") + "]",
     ].join(" ")
   end
 
   def inspect
     to_s
+  end
+
+  def clone
+    Topiary::Node.new(data, needs, feeds)
   end
 
 end

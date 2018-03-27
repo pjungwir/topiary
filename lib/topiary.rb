@@ -1,5 +1,8 @@
 require 'topiary/version'
+require 'topiary/exceptions'
 require 'topiary/node'
+require 'topiary/graph'
+require 'topiary/directed_graph'
 require 'set'
 
 # {Topiary} provides a topological sort function for Directed Acyclic Graphs.
@@ -44,7 +47,7 @@ module Topiary
     # Make sure there were no cycles
     node_list.each do |n2|
       if n2.needs.any? or n2.feeds.any?
-        raise "Leftover edges found: this graph has a cycle"
+        raise InvalidGraph, "Leftover edges found: this graph has a cycle"
       end
     end
 

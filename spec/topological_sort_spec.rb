@@ -9,7 +9,7 @@ describe Topiary do
     n.feed! n
     expect {
       Topiary.sort([n])
-    }.to raise_error "Leftover edges found: this graph has a cycle"
+    }.to raise_error Topiary::InvalidGraph, "Leftover edges found: this graph has a cycle"
   end
 
   it "raises on a two-node cycle" do
@@ -19,7 +19,7 @@ describe Topiary do
     n2.feed! n1
     expect {
       Topiary.sort([n1, n2])
-    }.to raise_error "Leftover edges found: this graph has a cycle"
+    }.to raise_error Topiary::InvalidGraph, "Leftover edges found: this graph has a cycle"
   end
 
   it "raises on a three-node cycle" do
@@ -31,7 +31,7 @@ describe Topiary do
     n3.feed! n1
     expect {
       Topiary.sort([n1, n2, n3])
-    }.to raise_error "Leftover edges found: this graph has a cycle"
+    }.to raise_error Topiary::InvalidGraph, "Leftover edges found: this graph has a cycle"
   end
 
   it "sorts a graph of one node" do
