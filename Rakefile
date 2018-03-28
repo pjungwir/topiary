@@ -10,7 +10,7 @@ task readme: [] do
 end
 
 if ENV['CI'].nil?
-  task default: %i[spec rubocop]
+  task default: %w[spec rubocop]
 else
   case ENV['SUITE']
   when 'rubocop' then task default: :rubocop
