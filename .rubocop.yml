@@ -24,6 +24,9 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
+Layout/ExtraSpacing:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
@@ -43,6 +46,9 @@ Metrics/MethodLength:
   Exclude:
     - "spec/**/*"
   Max: 35
+
+Metrics/ClassLength:
+  Max: 1000
 
 Style/AsciiComments:
   Enabled: false
@@ -82,6 +88,9 @@ Style/AndOr:
   Enabled: false
 
 Style/IfUnlessModifier:
+  Enabled: false
+
+Style/NegatedIf:
   Enabled: false
 
 Style/TrailingCommaInArrayLiteral:

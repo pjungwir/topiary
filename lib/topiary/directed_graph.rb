@@ -84,6 +84,26 @@ module Topiary
       all_from_node_list(nodes).reject(&:has_cycles?).each(&:forbid_cycles!)
     end
 
+    # Returns only those graphs that are topologically distinct
+    def self.topologically_distinct(graphs)
+      already_seen = Set.new
+      Enumerator.new do |y|
+        graphs.each do |g|
+          is_new = true
+          already_seen.each do |g2|
+            if g2.topologically_equivalent? g
+              is_new = false
+              break
+            end
+          end
+          if is_new
+            y.yield g
+            already_seen << g
+          end
+        end
+      end
+    end
+
     def initialize(nodes=[])
       super
       @forbid_cycles = false
@@ -92,6 +112,60 @@ module Topiary
     def add_edge!(from_node, to_node)
       from_node.feed! to_node
       maybe_forbid_cycles!
+    end
+
+    def edges
+      Enumerator.new do |y|
+        nodes.each do |n|
+          n.feeds.each do |n2|
+            y.yield Edge.new(n, n2)
+          end
+        end
+      end
+    end
+
+    # Two graphs A and B are topologically equivalent
+    # if there is a bijection phi on the vertices
+    # such that edge phi(u)phi(v) is in B iff uv is in A.
+    def topologically_equivalent?(other)
+      our_nodes = nodes.to_a
+      other_nodes = other.nodes.to_a
+      return false if our_nodes.size != other_nodes.size
+      our_edges = edges.to_a
+      other_edges = other.edges.to_a
+      return false if our_edges.size != other_edges.size
+
+      our_node_numbers = Hash[
+        our_nodes.each_with_index.map{|n, i| [n, i]}
+      ]
+
+      # Since there are no permutations,
+      # we have to special case graphs with 0 or 1 node:
+      case our_nodes.size
+      when 0
+        true
+      when 1
+        true  # since we already know they have the same number of edges
+      else
+        # Now we have to try all permutations of the nodes:
+        0.upto(nodes.size - 1).to_a.permutation.each do |phi|
+          equivalent = true
+          catch :answered do
+            our_nodes.each_with_index do |u, i|
+              phi_u = other_nodes[phi[i]]
+              u.feeds.each do |v|
+                phi_v = other_nodes[phi[our_node_numbers[v]]]
+                if not phi_u.feeds.include?(phi_v)
+                  equivalent = false
+                  throw :answered
+                end
+              end
+            end
+          end
+          return true if equivalent
+        end
+        false
+      end
     end
 
     # rubocop:disable Naming/PredicateName

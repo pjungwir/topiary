@@ -1,6 +1,7 @@
 require 'topiary/version'
 require 'topiary/exceptions'
 require 'topiary/node'
+require 'topiary/edge'
 require 'topiary/graph'
 require 'topiary/directed_graph'
 require 'set'
