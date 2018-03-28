@@ -1,3 +1,10 @@
+1.0.3
+-----
+
+- Added Graph and DirectedGraph, exceptions, functions to compute all
+possible {acyclic,} digraphs of V vertices
+- Added Edge class and topologically_distinct function
+
 1.0.2
 -----
 
