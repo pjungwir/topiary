@@ -5,9 +5,15 @@ require 'rubocop/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 RuboCop::RakeTask.new
 
-task default: :test
-task test: %w[spec rubocop]
-
 task readme: [] do
   `markdown README.md >README.html`
+end
+
+if ENV['CI'].nil?
+  task default: %i[spec rubocop]
+else
+  case ENV['SUITE']
+  when 'rubocop' then task default: :rubocop
+  else                task default: :spec
+  end
 end
